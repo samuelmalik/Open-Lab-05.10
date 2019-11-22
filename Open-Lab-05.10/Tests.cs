@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 
 namespace Open_Lab_05._10
@@ -34,16 +33,16 @@ namespace Open_Lab_05._10
             {
                 var count = rand.Next(1, 10);
 
+                var chars = new char[count];
                 var digits = new int[count];
-                var builder = new StringBuilder(count);
 
                 for (var i = 0; i < count; i++)
                 {
                     digits[i] = rand.Next(1, 10);
-                    builder.Append(digits[i]);
+                    chars[i] = (char) (digits[i] + '0');
                 }
 
-                yield return new TestCaseData(int.Parse(builder.ToString()), digits.Aggregate((n1, n2) => n1 * n2));
+                yield return new TestCaseData(int.Parse(chars), digits.Aggregate((n1, n2) => n1 * n2));
             }
         }
 
